@@ -1,115 +1,47 @@
-{
- "cells": [
-  {
-   "cell_type": "markdown",
-   "id": "65d11cfe-367e-48f7-81de-bb3f470ff15d",
-   "metadata": {},
-   "source": [
-    "# Quantum Grover Cost Estimator & Exponential Congruence Solver\n",
-    "\n",
-    "An algorithmic tool designed to solve exponential congruence equations of the form:\n",
-    "$$a \\cdot f^x + b \\cdot g^y \\equiv c \\pmod{q}$$\n",
-    "\n",
-    "The project utilizes a classical **Meet-in-the-Middle (Baby-step Giant-step)** optimization technique to map the solution space, and provides a theoretical complexity comparison against **Grover's Quantum Search Algorithm**.\n",
-    "\n",
-    "---\n",
-    "\n",
-    "## 📌 Theoretical Background\n",
-    "\n",
-    "### 1. Classical Search Space ($N$)\n",
-    "Given a maximum exponent boundary (`max_exp`), the total size of the exhaustive brute-force search space for pairs $(x, y)$ is:\n",
-    "$$N = (\\text{max\\_exp} + 1)^2$$\n",
-    "\n",
-    "Instead of a brute-force $O(N)$ check, this solver builds a Hash-Table mapping for the left-hand side, reducing the classical solver time complexity asymptotically to $O(\\sqrt{N})$.\n",
-    "\n",
-    "### 2. Quantum Speedup (Grover's Oracle)\n",
-    "If the equation has $M$ valid solutions within the search space, **Grover's Quantum Search Algorithm** can locate a solution with a quadratic speedup over pure unstructured search. The theoretical number of required quantum oracle evaluations is estimated using:\n",
-    "$$\\text{Grover Cost} \\approx \\frac{\\pi}{4} \\sqrt{\\frac{N}{M}}$$\n",
-    "\n",
-    "This script evaluates the boundary threshold where a quantum speedup becomes distinct compared to optimized classical lookup mechanisms.\n",
-    "\n",
-    "---\n",
-    "\n",
-    "## 🚀 Features\n",
-    "* **Meet-in-the-Middle Solver:** High-performance modular exponentiation parsing using Python default dictionaries.\n",
-    "* **Quantum Complexity Modeling:** Computes theoretical Grover oracle iterations based on actual solution density ($M$).\n",
-    "* **Statistical Benchmarking:** Automatically evaluates the average number of classical trials versus quantum upper bounds using `tabulate` interface.\n",
-    "\n",
-    "---\n",
-    "\n",
-    "## 💻 Sample Output\n",
-    "\n",
-    "```text\n",
-    "======================================================================\n",
-    " 📌 PROJECT CASE: EXAMPLE 1 → 2^X + 3^Y ≡ 10 (MOD 17)\n",
-    "======================================================================\n",
-    "╒═══════════════════════════╤════════════════════════════════════════╕\n",
-    "│ Parameter                 │ Value                                  │\n",
-    "╞═══════════════════════════╪════════════════════════════════════════╡\n",
-    "│ Target Equation           │ 1·2^x + 1·3^y ≡ 10 (mod 17)            │\n",
-    "├---------------------------┼----------------------------------------┤\n",
-    "│ Search Bound              │ x, y ∈ [0, 15]                         │\n",
-    "├---------------------------┼----------------------------------------┤\n",
-    "│ Total Search Space (N)    │ 256 combinations                       │\n",
-    "├---------------------------┼----------------------------------------┤\n",
-    "│ Total Solutions Found (M) │ 16                                     │\n",
-    "╘═══════════════════════════╧════════════════════════════════════════╛\n",
-    "\n",
-    "\n",
-    "💡 VALID SOLUTIONS FOUND:\n",
-    " Index   X Value   Y Value\n",
-    "-------+---------+---------\n",
-    " #1      x = 0     y = 3\n",
-    " #2      x = 1     y = 5\n",
-    " #3      x = 2     y = 15\n",
-    " ...\n",
-    "\n",
-    "📊 ALGORITHMIC COST COMPARISON:\n",
-    "╒═════════════════════════════════╤═══════════════════════════╤══════════════════╕\n",
-    "│ Approach / Framework            │ Estimated Complexity Cost │ Asymptotic Bound │\n",
-    "╞═════════════════════════════════╪═══════════════════════════╪══════════════════╡\n",
-    "│ ⚡ Classical Lookup (Average)    │ 15.12 evaluations         │ O(√N) space/time │\n",
-    "├---------------------------------┼---------------------------┼------------------┤\n",
-    "│ 🔮 Grover's Search (Theoretical) │ 3.14 oracle calls         │ O(√N/M) bound    │\n",
-    "╘═════════════════════════════════╧═══════════════════════════╧══════════════════╛\n",
-    "======================================================================"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "3c0e5115-29aa-4fa7-9055-197a4ad47195",
-   "metadata": {},
-   "source": [
-    "---\n",
-    "\n",
-    "## 🛠️ Requirements & Execution\n",
-    "No heavy dependencies or quantum hardware simulators are needed to run the estimator core, as it focuses on algorithmic mathematics.\n",
-    "\n",
-    "```bash\n",
-    "pip install tabulate\n",
-    "python Quantum_Grover_Solver.ipynb"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.13.7"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+# Quantum Grover Cost Estimator & Exponential Congruence Solver
+
+An algorithmic tool designed to solve exponential congruence equations of the form:
+$$a \cdot f^x + b \cdot g^y \equiv c \pmod{q}$$
+
+The project utilizes a classical **Meet-in-the-Middle (Baby-step Giant-step)** optimization technique to map the solution space, and provides a theoretical complexity comparison against **Grover's Quantum Search Algorithm**.
+
+---
+
+## 📌 Theoretical Background
+
+### 1. Classical Search Space ($N$)
+Given a maximum exponent boundary (`max_exp`), the total size of the exhaustive brute-force search space for pairs $(x, y)$ is:
+$$N = (\text{max\_exp} + 1)^2$$
+
+Instead of a brute-force $O(N)$ check, this solver builds a Hash-Table mapping for the left-hand side, reducing the classical solver time complexity asymptotically to $O(\sqrt{N})$.
+
+### 2. Quantum Speedup (Grover's Oracle)
+If the equation has $M$ valid solutions within the search space, **Grover's Quantum Search Algorithm** can locate a solution with a quadratic speedup over pure unstructured search. The theoretical number of required quantum oracle evaluations is estimated using:
+$$\text{Grover Cost} \approx \frac{\pi}{4} \sqrt{\frac{N}{M}}$$
+
+---
+
+## 🚀 Features
+* **Meet-in-the-Middle Solver:** High-performance modular exponentiation parsing using Python default dictionaries.
+* **Quantum Complexity Modeling:** Computes theoretical Grover oracle iterations based on actual solution density ($M$).
+* **Statistical Benchmarking:** Automatically evaluates the average number of classical trials versus quantum upper bounds using `tabulate` interface.
+
+---
+
+## 💻 Sample Output
+
+```text
+======================================================================
+ 📌 PROJECT CASE: EXAMPLE 1 → 2^X + 3^Y ≡ 10 (MOD 17)
+======================================================================
+╒═══════════════════════════╤════════════════════════════════════════╕
+│ Parameter                 │ Value                                  │
+╞═══════════════════════════╪════════════════════════════════════════╡
+│ Target Equation           │ 1·2^x + 1·3^y ≡ 10 (mod 17)            │
+├---------------------------┼----------------------------------------┤
+│ Search Bound              │ x, y ∈ [0, 15]                         │
+├---------------------------┼----------------------------------------┤
+│ Total Search Space (N)    │ 256 combinations                       │
+├---------------------------┼----------------------------------------┤
+│ Total Solutions Found (M) │ 16                                     │
+╘═══════════════════════════╧════════════════════════════════════════╛
