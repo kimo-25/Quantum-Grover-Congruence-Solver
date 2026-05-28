@@ -1,6 +1,7 @@
 # Quantum Grover Cost Estimator & Exponential Congruence Solver
 
-An algorithmic tool designed to solve exponential congruence equations of the form:
+An algorithmic tool designed to solve exponential congruence equations of the form: 
+
 $$a \cdot f^x + b \cdot g^y \equiv c \pmod{q}$$
 
 The project utilizes a classical **Meet-in-the-Middle (Baby-step Giant-step)** optimization technique to map the solution space, and provides a theoretical complexity comparison against **Grover's Quantum Search Algorithm**.
