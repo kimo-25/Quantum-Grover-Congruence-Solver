@@ -44,4 +44,8 @@ $$\text{Grover Cost} \approx \frac{\pi}{4} \sqrt{\frac{N}{M}}$$
 │ Total Search Space (N)    │ 256 combinations                       │
 ├---------------------------┼----------------------------------------┤
 │ Total Solutions Found (M) │ 16                                     │
-╘═══════════════════════════╧════════════════════════════════════════╛
+╘═══════════════════════════╧════════════════════════════════════════⛛
+🛠️ Requirements & Execution
+Bash
+pip install tabulate
+python Quantum_Grover_Solver.ipynb
