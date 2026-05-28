@@ -9,9 +9,9 @@ The project utilizes a classical **Meet-in-the-Middle (Baby-step Giant-step)** o
 
 ## 📌 Theoretical Background
 
-### 1. Classical Search Space ($N$)
-Given a maximum exponent boundary (`max_exp`), the total size of the exhaustive brute-force search space for pairs $(x, y)$ is:
-$$N = (\text{max\_exp} + 1)^2$$
+### 1. Classical Search Space (N)
+Given a maximum exponent boundary (`max_exp`), the total size of the exhaustive brute-force search space for pairs (x, y) is:
+$$N = (\text{max.exp} + 1)^2$$
 
 Instead of a brute-force $O(N)$ check, this solver builds a Hash-Table mapping for the left-hand side, reducing the classical solver time complexity asymptotically to $O(\sqrt{N})$.
 
@@ -23,7 +23,7 @@ $$\text{Grover Cost} \approx \frac{\pi}{4} \sqrt{\frac{N}{M}}$$
 
 ## 🚀 Features
 * **Meet-in-the-Middle Solver:** High-performance modular exponentiation parsing using Python default dictionaries.
-* **Quantum Complexity Modeling:** Computes theoretical Grover oracle iterations based on actual solution density ($M$).
+* **Quantum Complexity Modeling:** Computes theoretical Grover oracle iterations based on actual solution density (M).
 * **Statistical Benchmarking:** Automatically evaluates the average number of classical trials versus quantum upper bounds using `tabulate` interface.
 
 ---
@@ -34,18 +34,16 @@ $$\text{Grover Cost} \approx \frac{\pi}{4} \sqrt{\frac{N}{M}}$$
 ======================================================================
  📌 PROJECT CASE: EXAMPLE 1 → 2^X + 3^Y ≡ 10 (MOD 17)
 ======================================================================
-╒═══════════════════════════╤════════════════════════════════════════╕
-│ Parameter                 │ Value                                  │
-╞═══════════════════════════╪════════════════════════════════════════╡
-│ Target Equation           │ 1·2^x + 1·3^y ≡ 10 (mod 17)            │
-├---------------------------┼----------------------------------------┤
-│ Search Bound              │ x, y ∈ [0, 15]                         │
-├---------------------------┼----------------------------------------┤
-│ Total Search Space (N)    │ 256 combinations                       │
-├---------------------------┼----------------------------------------┤
-│ Total Solutions Found (M) │ 16                                     │
-╘═══════════════════════════╧════════════════════════════════════════⛛
-🛠️ Requirements & Execution
-Bash
-pip install tabulate
++---------------------------+----------------------------------------+
+| Parameter                 | Value                                  |
++---------------------------+----------------------------------------+
+| Target Equation           | 1·2^x + 1·3^y ≡ 10 (mod 17)            |
+| Search Bound              | x, y ∈ [0, 15]                         |
+| Total Search Space (N)    | 256 combinations                       |
+| Total Solutions Found (M) | 16                                     |
++---------------------------+----------------------------------------+
+```
+## 🛠️ Requirements & Execution
+pip install tabulate 
+
 python Quantum_Grover_Solver.ipynb
